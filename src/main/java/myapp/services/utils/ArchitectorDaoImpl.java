@@ -2,25 +2,31 @@ package myapp.services.utils;
 
 import myapp.persistence.dao.ArchitectorDao;
 import myapp.persistence.entities.ArchitectorEntity;
+import myapp.persistence.entities.UserEntity;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by PANNA on 01.04.2017.
  */
+@Repository("architectors")
 public class ArchitectorDaoImpl implements ArchitectorDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String GET="SELECT * FROM department WHERE id=?";
-    private static final String INSERT = "INSERT INTO department (address, e-mail, phonenumber) VALUES  (?,?,?);";
-    private static final String UPDATE="UPDATE department SET address=?, e-mail=?, phonenumber=? WHERE id=?";
-    private static final String DELETE="DELETE FROM department WHERE id=?";
+    private String GET="SELECT * FROM architectors WHERE id_architector=?";
+    private static final String INSERT = "INSERT INTO architectors (id_architector,Users_id_user,pib,hours,work_experience,email, phone_number) VALUES  (?,?,?,?" +
+            ",?,?,?);";
+    private static final String UPDATE="UPDATE architectors SET pib=?, hours=?,work_experience=?, phone_number=? WHERE id_architector=?";
+    private static final String DELETE="DELETE FROM achitectors WHERE id_architector=?";
+    private static final String FINDALL="SELECT * FROM architectors GROUP BY id_architector";
     private BasicDataSource dataSource;
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
@@ -37,23 +43,34 @@ public class ArchitectorDaoImpl implements ArchitectorDao {
     public RowMapper<ArchitectorEntity> mapper = new RowMapper<ArchitectorEntity>() {
         public ArchitectorEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
             ArchitectorEntity architector = new ArchitectorEntity();
-
+            architector.setId_architector(rs.getInt("id_architector"));
+            architector.setId_user(rs.getInt("Users_id_user"));
+            architector.setPib(rs.getString("pib"));
+            architector.setHours(rs.getInt("hours"));
+            architector.setWork_experience(rs.getInt("work_experience"));
+            architector.setEmail(rs.getString("email"));
+            architector.setPhone_number(rs.getString("phone_number"));
             return architector;
         }
     };
     public ArchitectorEntity get(int id_architector) {
-        return null;
+        return jdbcTemplate.queryForObject(GET,mapper,id_architector);
     }
 
     public int insert(ArchitectorEntity architector) {
-        return 0;
+        return jdbcTemplate.update(INSERT, architector.getId_architector(),architector.getId_user(),architector.getPib(),architector.getHours(),architector.getWork_experience(),architector.getEmail(),architector.getPhone_number());
     }
 
     public void update(ArchitectorEntity architector) {
+         jdbcTemplate.update(UPDATE, architector.getId_architector(),architector.getPib(),architector.getHours(),architector.getWork_experience(),architector.getEmail(),architector.getPhone_number());
 
     }
 
     public void remove(ArchitectorEntity architector) {
+        jdbcTemplate.update(DELETE,architector.getId_architector());
+    }
 
+    public List<ArchitectorEntity> findAll() {
+        return jdbcTemplate.query(FINDALL,mapper);
     }
 }

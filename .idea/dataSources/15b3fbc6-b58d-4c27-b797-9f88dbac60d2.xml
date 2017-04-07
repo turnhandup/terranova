@@ -408,12 +408,14 @@ Orderer_Department_id_department</RefColNames>
     </column>
     <column id="92" parent="16" name="role">
       <Position>4</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;USER&apos;</DefaultExpression>
     </column>
-    <column id="93" parent="16" name="active">
+    <column id="93" parent="16" name="enabled">
       <Position>5</Position>
-      <DataType>tinyint(1)|0</DataType>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
     <index id="94" parent="16" name="users_login_uindex">
       <ColNames>login</ColNames>

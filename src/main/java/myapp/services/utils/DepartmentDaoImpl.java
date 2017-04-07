@@ -21,10 +21,10 @@ public class DepartmentDaoImpl implements DepartmentDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String GET="SELECT * FROM department WHERE id=?";
+    private String GET="SELECT * FROM department WHERE id_department=?";
     private static final String INSERT = "INSERT INTO department (address, email, phonenumber) VALUES  (?,?,?);";
-    private static final String UPDATE="UPDATE department SET address=?, email=?, phonenumber=? WHERE id=?";
-    private static final String DELETE="DELETE FROM department WHERE id=?";
+    private static final String UPDATE="UPDATE department SET address=?, email=?, phonenumber=? WHERE id_department=?";
+    private static final String DELETE="DELETE FROM department WHERE id_department=?";
     private BasicDataSource dataSource;
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;

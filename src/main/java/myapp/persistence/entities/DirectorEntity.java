@@ -13,7 +13,7 @@ public class DirectorEntity {
     private String pib;
     private String address;
     private String marital_status;
-    private int work_experience;
+    private double work_experience;
 
     public DirectorEntity(int id_director, int id_user, int id_department, String pib, String address, String marital_status, int work_experience) {
         this.id_director = id_director;
@@ -86,11 +86,11 @@ public class DirectorEntity {
         this.marital_status = marital_status;
     }
 
-    public int getWork_experience() {
+    public double getWork_experience() {
         return work_experience;
     }
 
-    public void setWork_experience(int work_experience) {
+    public void setWork_experience(double work_experience) {
         this.work_experience = work_experience;
     }
 }

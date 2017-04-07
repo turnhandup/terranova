@@ -2,6 +2,9 @@ package myapp.persistence.entities;
 
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by PANNA on 01.04.2017.
  */
@@ -9,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class UserEntity {
     public String login;
     public String password;
-    public int role;
-    public int active;
+    private String role;
+    private int enabled;
 
     public String getLogin() {
         return login;
@@ -28,28 +31,22 @@ public class UserEntity {
         this.password = password;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public int getActive() {
-        return active;
+    public int getEnabled() {
+        return enabled;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
     }
 
-    public UserEntity(String login, String password, int role, int active) {
-        this.login = login;
-        this.password = password;
-        this.role = role;
-        this.active = active;
-    }
     public UserEntity(){}
 
     @Override
@@ -57,9 +54,8 @@ public class UserEntity {
         return "UserEntity{" +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
-                ", active=" + active +
+                ", role='" + role + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
-
 }
