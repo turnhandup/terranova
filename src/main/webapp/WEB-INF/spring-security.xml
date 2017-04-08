@@ -23,7 +23,7 @@
         <!-- enable csrf protection -->
         <csrf/>
     </http>
-    <beans:bean id="authSuccessHandler" class="myapp.controllers.web.AuthSuccessHandler" />
+    <beans:bean id="authSuccessHandler" class="myapp.controllers.rest.AuthSuccessHandler" />
     <beans:bean id="encoder" class="myapp.services.validators.MD5PasswordEncoder"/>
     <authentication-manager>
         <authentication-provider>

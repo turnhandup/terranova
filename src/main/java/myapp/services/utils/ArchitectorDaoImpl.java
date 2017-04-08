@@ -5,10 +5,12 @@ import myapp.persistence.entities.ArchitectorEntity;
 import myapp.persistence.entities.UserEntity;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.awt.print.Pageable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -24,7 +26,7 @@ public class ArchitectorDaoImpl implements ArchitectorDao {
     private String GET="SELECT * FROM architectors WHERE id_architector=?";
     private static final String INSERT = "INSERT INTO architectors (id_architector,Users_id_user,pib,hours,work_experience,email, phone_number) VALUES  (?,?,?,?" +
             ",?,?,?);";
-    private static final String UPDATE="UPDATE architectors SET pib=?, hours=?,work_experience=?, phone_number=? WHERE id_architector=?";
+    private static final String UPDATE="UPDATE architectors SET pib=?, hours=?, work_experience=?, email=?, phone_number=? WHERE id_architector=?";
     private static final String DELETE="DELETE FROM achitectors WHERE id_architector=?";
     private static final String FINDALL="SELECT * FROM architectors GROUP BY id_architector";
     private BasicDataSource dataSource;
@@ -62,8 +64,9 @@ public class ArchitectorDaoImpl implements ArchitectorDao {
     }
 
     public void update(ArchitectorEntity architector) {
-         jdbcTemplate.update(UPDATE, architector.getId_architector(),architector.getPib(),architector.getHours(),architector.getWork_experience(),architector.getEmail(),architector.getPhone_number());
-
+        System.out.println(architector.getEmail());
+         jdbcTemplate.update(UPDATE,architector.getPib(),architector.getHours(),architector.getWork_experience(),architector.getEmail(),architector.getPhone_number(),architector.getId_architector());
+        System.out.println();
     }
 
     public void remove(ArchitectorEntity architector) {
@@ -71,6 +74,12 @@ public class ArchitectorDaoImpl implements ArchitectorDao {
     }
 
     public List<ArchitectorEntity> findAll() {
+        List<ArchitectorEntity> findall1=jdbcTemplate.query(FINDALL,mapper);
+        for(ArchitectorEntity l:findall1){
+            System.out.println(l.toString());
+        }
         return jdbcTemplate.query(FINDALL,mapper);
     }
+
+
 }

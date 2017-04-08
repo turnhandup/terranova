@@ -17,8 +17,10 @@ import static myapp.services.convertors.Fields.Architector.*;
 public class ArchitectorConverter extends Converter<ArchitectorEntity> {
     public Map<String, Object> convert(ArchitectorEntity object, Set<String> fields) {
         Map<String, Object> map = new HashMap<>();
-        if(fields.contains(ID))
+        if(fields.contains(ID)) {
             map.put(ID, object.getId_architector());
+            System.out.println(object.getId_architector());
+        }
         if(fields.contains(EMAIL))
             map.put(EMAIL, object.getEmail());
         if(fields.contains(PIB))

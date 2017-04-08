@@ -1,7 +1,9 @@
 package myapp.persistence.dao;
 
 import myapp.persistence.entities.ArchitectorEntity;
+import org.springframework.data.domain.Page;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**
@@ -9,7 +11,6 @@ import java.util.List;
  */
 public interface ArchitectorDao {
     ArchitectorEntity get(int id_architector);
-    public
     int insert(ArchitectorEntity architector);
     void update(ArchitectorEntity architector);
     void remove(ArchitectorEntity architector);

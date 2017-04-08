@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SpringMVCExample" target="1.5" />
+      <module name="SpringMVCExample" target="1.7" />
       <module name="TerranovaCompany" target="1.5" />
     </bytecodeTargetLevel>
   </component>
