@@ -45,7 +45,7 @@
 <body>
 <script>
     var HEADERS = {
-        '${_csrf.headerName}': '${_csrf.token}',
+        <%--'${_csrf.headerName}': '${_csrf.token}',--%>
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     };
@@ -58,13 +58,19 @@
         <div class="form-group">
             <label class=" col-xs-12 col-sm-4 control-label" for="textinput">Nickname</label>
             <div class="col-xs-12 col-sm-8 col-md-6">
-                <input id="textinput" name="textinput" type="text"   class="form-control input-md">
+                <input id="textinput" name="textinput" type="text" required ng-model="architectors.login" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class=" col-xs-12 col-sm-4 control-label" for="textinput">Password</label>
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <input id="textinput" name="textinput" type="password" required ng-model="architectors.password" class="form-control input-md">
             </div>
         </div>
         <div class="form-group">
             <label class=" col-xs-12 col-sm-4 control-label" for="textinput">Fullname</label>
             <div class="col-xs-12 col-sm-8 col-md-6">
-                <input id="textinput" name="textinput" type="text" ng-model="architectors.pib" class="form-control input-md">
+                <input id="textinput" name="textinput" type="text" required ng-model="architectors.pib" class="form-control input-md">
             </div>
         </div>
          <div class="form-group">
@@ -82,7 +88,7 @@
          <div class="form-group">
             <label class=" col-xs-12 col-sm-4 control-label" for="textinput">Hours</label>
             <div class="col-xs-12 col-sm-8 col-md-6">
-                <input id="textinput" name="textinput" type="text" ng-model="architectors.hours" class="form-control input-md">
+                <input id="textinput" name="textinput" type="text" required ng-model="architectors.hours" class="form-control input-md">
             </div>
         </div>
          <div class="form-group">

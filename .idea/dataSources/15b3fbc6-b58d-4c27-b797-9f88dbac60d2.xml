@@ -222,23 +222,23 @@ Architectors_id_architector</ColNames>
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="58" parent="13" name="e-mail">
-      <Position>6</Position>
-      <DataType>varchar(45)|0</DataType>
-    </column>
-    <column id="59" parent="13" name="address">
+    <column id="58" parent="13" name="address">
       <Position>7</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="60" parent="13" name="Department_id_department">
+    <column id="59" parent="13" name="Department_id_department">
       <Position>8</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="61" parent="13" name="Users_id_user">
+    <column id="60" parent="13" name="Users_id_user">
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="13" name="email">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
     </column>
     <index id="62" parent="13" name="fk_Orderer_Department_idx">
       <ColNames>Department_id_department</ColNames>
@@ -327,62 +327,42 @@ Department_id_department</RefColNames>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="78" parent="15" name="Orders_Orderer_id_orderer">
+    <column id="78" parent="15" name="Objects_id_object">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="79" parent="15" name="Orders_Orderer_Department_id_department">
+    <column id="79" parent="15" name="start_date">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="80" parent="15" name="Objects_id_object">
+    <column id="80" parent="15" name="end_date">
       <Position>4</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>date|0</DataType>
     </column>
-    <column id="81" parent="15" name="start_date">
+    <column id="81" parent="15" name="determination">
       <Position>5</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="82" parent="15" name="end_date">
-      <Position>6</Position>
-      <DataType>date|0</DataType>
-    </column>
-    <column id="83" parent="15" name="determination">
-      <Position>7</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
-    <index id="84" parent="15" name="fk_Orders_has_Objects_Objects1_idx">
+    <index id="82" parent="15" name="fk_Orders_has_Objects_Objects1_idx">
       <ColNames>Objects_id_object</ColNames>
     </index>
-    <index id="85" parent="15" name="fk_Orders_has_Objects_Orders1_idx">
-      <ColNames>Orders_id_order
-Orders_Orderer_id_orderer
-Orders_Orderer_Department_id_department</ColNames>
+    <index id="83" parent="15" name="fk_Orders_has_Objects_Orders1_idx">
+      <ColNames>Orders_id_order</ColNames>
     </index>
-    <key id="86" parent="15" name="PRIMARY">
+    <key id="84" parent="15" name="PRIMARY">
       <ColNames>Orders_id_order
-Orders_Orderer_id_orderer
-Orders_Orderer_Department_id_department
 Objects_id_object</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="87" parent="15" name="fk_Orders_has_Objects_Orders1">
-      <ColNames>Orders_id_order
-Orders_Orderer_id_orderer
-Orders_Orderer_Department_id_department</ColNames>
+    <foreign-key id="85" parent="15" name="fk_Orders_has_Objects_Orders1">
+      <ColNames>Orders_id_order</ColNames>
       <RefSchemaName>terranova</RefSchemaName>
       <RefTableName>orders</RefTableName>
-      <RefColNames>id_order
-Orderer_id_orderer
-Orderer_Department_id_department</RefColNames>
-      <OnUpdate>no-action</OnUpdate>
-      <OnDelete>no-action</OnDelete>
+      <RefColNames>id_order</RefColNames>
     </foreign-key>
-    <foreign-key id="88" parent="15" name="fk_Orders_has_Objects_Objects1">
+    <foreign-key id="86" parent="15" name="fk_Orders_has_Objects_Objects1">
       <ColNames>Objects_id_object</ColNames>
       <RefSchemaName>terranova</RefSchemaName>
       <RefTableName>objects</RefTableName>
@@ -390,44 +370,36 @@ Orderer_Department_id_department</RefColNames>
       <OnUpdate>no-action</OnUpdate>
       <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="89" parent="16" name="id_user">
+    <column id="87" parent="16" name="id_user">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="90" parent="16" name="login">
+    <column id="88" parent="16" name="login">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="91" parent="16" name="password">
+    <column id="89" parent="16" name="password">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="92" parent="16" name="role">
+    <column id="90" parent="16" name="role">
       <Position>4</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;USER&apos;</DefaultExpression>
     </column>
-    <column id="93" parent="16" name="enabled">
+    <column id="91" parent="16" name="enabled">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <index id="94" parent="16" name="users_login_uindex">
-      <ColNames>login</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="95" parent="16" name="PRIMARY">
+    <key id="92" parent="16" name="PRIMARY">
       <ColNames>id_user</ColNames>
       <Primary>1</Primary>
-    </key>
-    <key id="96" parent="16" name="users_login_uindex">
-      <ColNames>login</ColNames>
-      <UnderlyingIndexName>users_login_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

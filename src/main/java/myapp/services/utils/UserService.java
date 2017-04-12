@@ -2,6 +2,8 @@ package myapp.services.utils;
 
 import myapp.persistence.entities.UserEntity;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
 /**
@@ -10,4 +12,5 @@ import java.sql.SQLException;
 public interface UserService {
     public boolean isValidUser(String username, String password) throws SQLException;
     public UserEntity getUserByLogin(String login);
+    boolean logoutUser(HttpServletRequest request, HttpServletResponse response);
 }

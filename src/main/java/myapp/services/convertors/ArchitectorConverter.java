@@ -33,6 +33,16 @@ public class ArchitectorConverter extends Converter<ArchitectorEntity> {
             map.put(WORK_EXPERIENCE, object.getWork_experience());
         if(fields.contains(USERSID))
             map.put(USERSID, object.getId_user());
+        if(fields.contains(LOGIN)){
+            map.put(LOGIN, object.getUserEntity().getLogin());
+        }
+        if (fields.contains(PASSWORD)) {
+            map.put(PASSWORD,object.getUserEntity().getPassword());
+        }
+        if(fields.contains(ENABLED)){
+            map.put(ENABLED, object.getUserEntity().getEnabled());
+            System.out.println(object.getUserEntity().getEnabled());
+        }
         return map;
     }
 }

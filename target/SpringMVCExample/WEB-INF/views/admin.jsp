@@ -59,14 +59,14 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Architectors <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="" onclick="showArchitectors()">Show all</a></li>
-                            <li><a href="">Add new</a></li>
+                            <li><a href="web/admin/createarchitector">Add new</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><p>Show all</p></li>
-                            <li><p>Add new</p></li>
+                            <li><a href="" onclick="showOrderers()">Show all</a></li>
+                            <li><a href="web/admin/createorderer">Add new</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -101,13 +101,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix='core' uri='http://java.sun.com/jsp/jstl/core' %>
 
-<div id="allArchitectors"style="display:none">
+<div id="allArchitectors" style="display:none">
 <div class="container">
 <h2 class="usersTable" style="font-family:'Poiret One'">ARCHITECTORS TABLE</h2>
         <table class="table" ng-controller="all_architectors_control">
             <thead>
             <tr class="tableHeader"  style="font-family:'Poiret One'">
                 <th>ID</th>
+                <th>LOGIN</th>
                 <th>PIB</th>
                 <th>EMAIL</th>
                 <th>HOURS</th>
@@ -120,6 +121,7 @@
             <tr ng-repeat="architector in architectors">
 
                 <td>{{architector.id_architector}}</td>
+                <td>{{architector.login}}</td>
                 <td>{{architector.pib}}</td>
                 <td>{{architector.email}}</td>
                 <td>{{architector.hours}}</td>
@@ -130,7 +132,38 @@
         </table>
     </div>
     </div>
-    
+    <div id="allOrderers" style="display:none">
+        <div class="container">
+            <h2 class="usersTable" style="font-family:'Poiret One'">ORDERERS TABLE</h2>
+            <table class="table" ng-controller="all_orderers_control">
+                <thead>
+                <tr class="tableHeader"  style="font-family:'Poiret One'">
+                    <th>ID</th>
+                    <th>DEPARTMENT</th>
+                    <th>NICKNAME</th>
+                    <th>COMPANY NAME</th>
+                    <th>PIB</th>
+                    <th>PHONE NUMBER</th>
+                    <th>EMAIL</th>
+                    <th>EDIT</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="orderer in orderers">
+                    <td>{{orderer.id_orderer}}</td>
+                    <td>{{orderer.departmentadress}}</td>
+                    <td>{{orderer.login}}</td>
+                    <td>{{orderer.company_name}}</td>
+                    <td>{{orderer.pib}}</td>
+                    <td>{{orderer.phone_number}}</td>
+                    <td>{{orderer.email}}</td>
+                    <td><a href="/web/admin/{{orderer.id_orderer}}/editorderer" style="text-decoration: none; color:white;
+" class="glyphicon glyphicon-pencil"></a></td>            </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
 <script src="/resources/js/admin/all_architectors.js"></script>
 </body>

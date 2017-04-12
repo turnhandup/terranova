@@ -14,6 +14,15 @@ public class UserEntity {
     public String password;
     private String role;
     private int enabled;
+    private int id_user;
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
 
     public String getLogin() {
         return login;

@@ -53,7 +53,7 @@
         <p> Arhitecture in it's best quality</p>
         <hr>
         <div id="buttons">
-        <a href="/WEB-INF/views/register.html"> REGISTER</a><a href="/login">SIGN IN</a>
+        <a href="/web/admin/register"> REGISTER</a><a href="/login">SIGN IN</a>
         </div>
     </div>
 </div>

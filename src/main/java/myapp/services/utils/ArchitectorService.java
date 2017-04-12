@@ -17,6 +17,7 @@ public interface ArchitectorService {
     List<ArchitectorEntity> getAllArchitectors(int offset,int limit);
     List<Map<String, Object>> getAllArchitectorsMap(int offset, int limit, Set<String> fields) throws NoSuchEntityException;
     void removeArchitector(ArchitectorEntity architector);
+    int create(ArchitectorView architectorView);
     ArchitectorEntity updateArchitector(ArchitectorEntity user);
     ArchitectorEntity updateArchitector(ArchitectorView architectorView);
     ArchitectorEntity viewToEntity(ArchitectorView view);

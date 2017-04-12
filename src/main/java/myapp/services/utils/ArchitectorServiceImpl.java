@@ -69,6 +69,7 @@ public class ArchitectorServiceImpl implements ArchitectorService {
         updatedArchitector.setWork_experience(architectorData.getWork_experience());
         updatedArchitector.setPhone_number(architectorData.getPhone_number());
         updatedArchitector.setId_user(architectorData.getId_user());
+        updatedArchitector.setUserEntity(architectorData.getUserEntity());
         architectorDao.update(updatedArchitector);
         return updatedArchitector;
     }
@@ -85,6 +86,13 @@ public class ArchitectorServiceImpl implements ArchitectorService {
     }
 
     @Override
+    public int create(ArchitectorView architectorView) {
+        ArchitectorEntity architectorEntity=viewToEntity(architectorView);
+        architectorDao.insert(architectorEntity);
+        return architectorEntity.getId_architector();
+    }
+
+    @Override
     public ArchitectorEntity viewToEntity(ArchitectorView view){
         ArchitectorEntity architectorEntity = new ArchitectorEntity();
         architectorEntity.setId_architector(view.getId_architector());
@@ -94,6 +102,10 @@ public class ArchitectorServiceImpl implements ArchitectorService {
         architectorEntity.setHours(view.getHours());
         architectorEntity.setWork_experience(view.getWork_experience());
         architectorEntity.setPhone_number(view.getPhone_number());
+        UserEntity userEntity=new UserEntity();
+        userEntity.setLogin(view.getUser().getLogin());
+        userEntity.setPassword(view.getUser().getPassword());
+        architectorEntity.setUserEntity(userEntity);
         return architectorEntity;
     }
 }

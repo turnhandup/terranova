@@ -24,7 +24,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         <property name="url" value="jdbc:mysql://localhost:3306/terranova" />
         <property name="username" value="root" />
         <property name="password" value="root" />
-        <property name="initialSize" value="5" />
+        <property name="initialSize" value="10" />
         <property name="maxTotal" value="10" />
     </bean>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -60,6 +60,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         <property name="userService" ref="userService"></property>
     </bean>
 
+
     <bean id="userService" class="myapp.services.utils.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
     </bean>
@@ -75,9 +76,12 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <bean id="directorDao" class="myapp.services.utils.DirectorDaoImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>
-    <bean id="architectorService" class="myapp.services.utils.ArchitectorServiceImpl">
-
+    <bean id="ordererDao" class="myapp.services.utils.OrdererDaoImpl">
     </bean>
+    <bean id="architectorService" class="myapp.services.utils.ArchitectorServiceImpl">
+    </bean>
+    <bean id="ordererService" class="myapp.services.utils.OrdererServiceImpl"></bean>
+    <bean id="directorService" class="myapp.services.utils.DirectorServiceImpl"></bean>
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">

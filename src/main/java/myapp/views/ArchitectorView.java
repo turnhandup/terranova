@@ -11,6 +11,29 @@ public class ArchitectorView {
     private int work_experience;
     private String email;
     private String phone_number;
+    private UserView user;
+
+    @Override
+    public String toString() {
+        return "ArchitectorView{" +
+                "id_architector=" + id_architector +
+                ", id_user=" + id_user +
+                ", pib='" + pib + '\'' +
+                ", hours=" + hours +
+                ", work_experience=" + work_experience +
+                ", email='" + email + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", user=" + user +
+                '}';
+    }
+
+    public UserView getUser() {
+        return user;
+    }
+
+    public void setUser(UserView user) {
+        this.user = user;
+    }
 
     public int getId_architector() {
         return id_architector;
@@ -71,41 +94,31 @@ public class ArchitectorView {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof ArchitectorView)) return false;
 
         ArchitectorView that = (ArchitectorView) o;
 
-        if (id_architector != that.id_architector) return false;
-        if (id_user != that.id_user) return false;
-        if (hours != that.hours) return false;
-        if (work_experience != that.work_experience) return false;
-        if (pib != null ? !pib.equals(that.pib) : that.pib != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        return phone_number != null ? phone_number.equals(that.phone_number) : that.phone_number == null;
+        if (getId_architector() != that.getId_architector()) return false;
+        if (getId_user() != that.getId_user()) return false;
+        if (getHours() != that.getHours()) return false;
+        if (getWork_experience() != that.getWork_experience()) return false;
+        if (!getPib().equals(that.getPib())) return false;
+        if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
+        if (getPhone_number() != null ? !getPhone_number().equals(that.getPhone_number()) : that.getPhone_number() != null)
+            return false;
+        return getUser().equals(that.getUser());
     }
 
     @Override
     public int hashCode() {
-        int result = id_architector;
-        result = 31 * result + id_user;
-        result = 31 * result + (pib != null ? pib.hashCode() : 0);
-        result = 31 * result + hours;
-        result = 31 * result + work_experience;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (phone_number != null ? phone_number.hashCode() : 0);
+        int result = getId_architector();
+        result = 31 * result + getId_user();
+        result = 31 * result + getPib().hashCode();
+        result = 31 * result + getHours();
+        result = 31 * result + getWork_experience();
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+        result = 31 * result + (getPhone_number() != null ? getPhone_number().hashCode() : 0);
+        result = 31 * result + getUser().hashCode();
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ArchitectorView{" +
-                "id_architector=" + id_architector +
-                ", id_user=" + id_user +
-                ", pib='" + pib + '\'' +
-                ", hours=" + hours +
-                ", work_experience=" + work_experience +
-                ", email='" + email + '\'' +
-                ", phone_number='" + phone_number + '\'' +
-                '}';
     }
 }

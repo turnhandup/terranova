@@ -2,6 +2,8 @@ package myapp.persistence.entities;
 
 import org.springframework.stereotype.Component;
 
+import javax.jws.soap.SOAPBinding;
+
 /**
  * Created by PANNA on 01.04.2017.
  */
@@ -14,8 +16,9 @@ public class DirectorEntity {
     private String address;
     private String marital_status;
     private double work_experience;
-
-    public DirectorEntity(int id_director, int id_user, int id_department, String pib, String address, String marital_status, int work_experience) {
+    DepartmentEntity departmentEntity;
+    UserEntity userEntity;
+    public DirectorEntity(int id_director, int id_user, int id_department, String pib, String address, String marital_status, int work_experience, DepartmentEntity departmentEntity, UserEntity userEntity) {
         this.id_director = id_director;
         this.id_user = id_user;
         this.id_department = id_department;
@@ -23,8 +26,11 @@ public class DirectorEntity {
         this.address = address;
         this.marital_status = marital_status;
         this.work_experience = work_experience;
+        this.departmentEntity=departmentEntity;
+        this.userEntity=userEntity;
     }
     public DirectorEntity(){}
+
     @Override
     public String toString() {
         return "DirectorEntity{" +
@@ -35,6 +41,8 @@ public class DirectorEntity {
                 ", address='" + address + '\'' +
                 ", marital_status='" + marital_status + '\'' +
                 ", work_experience=" + work_experience +
+                ", departmentEntity=" + departmentEntity +
+                ", userEntity=" + userEntity +
                 '}';
     }
 
@@ -92,5 +100,21 @@ public class DirectorEntity {
 
     public void setWork_experience(double work_experience) {
         this.work_experience = work_experience;
+    }
+
+    public DepartmentEntity getDepartmentEntity() {
+        return departmentEntity;
+    }
+
+    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+        this.departmentEntity = departmentEntity;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }

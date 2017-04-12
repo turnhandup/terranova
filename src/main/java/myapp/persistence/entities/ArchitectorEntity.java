@@ -2,6 +2,8 @@ package myapp.persistence.entities;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by PANNA on 01.04.2017.
  */
@@ -14,17 +16,9 @@ public class ArchitectorEntity {
     private int work_experience;
     private String email;
     private String phone_number;
+    UserEntity userEntity;
+    List<ObjectEntity> objectEntities;
 
-    public ArchitectorEntity(int id_architector, int id_user, String pib, int hours, int work_experience, String email, String phone_number) {
-        this.id_architector = id_architector;
-        this.id_user = id_user;
-        this.pib = pib;
-        this.hours = hours;
-        this.work_experience = work_experience;
-        this.email = email;
-        this.phone_number = phone_number;
-    }
-    public ArchitectorEntity(){}
     @Override
     public String toString() {
         return "ArchitectorEntity{" +
@@ -35,7 +29,25 @@ public class ArchitectorEntity {
                 ", work_experience=" + work_experience +
                 ", email='" + email + '\'' +
                 ", phone_number='" + phone_number + '\'' +
+                ", userEntity=" + userEntity +
+                ", objectEntities=" + objectEntities +
                 '}';
+    }
+
+    public ArchitectorEntity() {
+    }
+
+    public ArchitectorEntity(int id_architector, int id_user, String pib, int hours, int work_experience, String email, String phone_number, UserEntity userEntity, List<ObjectEntity> objectEntities) {
+
+        this.id_architector = id_architector;
+        this.id_user = id_user;
+        this.pib = pib;
+        this.hours = hours;
+        this.work_experience = work_experience;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.userEntity = userEntity;
+        this.objectEntities = objectEntities;
     }
 
     public int getId_architector() {
@@ -92,5 +104,21 @@ public class ArchitectorEntity {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
+    public List<ObjectEntity> getObjectEntities() {
+        return objectEntities;
+    }
+
+    public void setObjectEntities(List<ObjectEntity> objectEntities) {
+        this.objectEntities = objectEntities;
     }
 }

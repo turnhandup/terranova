@@ -10,8 +10,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/web/admin/")
 public class AdminController {
-    @RequestMapping(value="/{id}", method=RequestMethod.GET)
-    public String userEditPage(){
-        return "/admin/architectorEdit";
-    }
+
 }

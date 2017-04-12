@@ -36,7 +36,7 @@ public class ArchitectorApiController {
             @PathVariable("id") int userId,
             @RequestParam(value = "fields", required = false, defaultValue = Fields.Architector.DEFAULT) Set<String> fields
     ) {
-        System.out.print(fields);
+//        System.out.print(fields);
         return responseFactory.get(architectorService.getArchitectorByIdMap(userId, fields));
     }
 
@@ -63,7 +63,16 @@ public class ArchitectorApiController {
     @ResponseBody Response<ArchitectorEntity>
     update(@RequestBody ArchitectorView architectorView) throws NoSuchEntityException {
         Response<ArchitectorEntity> arc=responseFactory.get(architectorService.updateArchitector(architectorView));
-        System.out.print(arc.getResult().toString());
+//        System.out.print(arc.getResult().toString());
         return responseFactory.get(architectorService.updateArchitector(architectorView));
+    }
+    @RequestMapping(
+            value="/create",
+            method=RequestMethod.PUT
+    )
+    public
+    @ResponseBody Response<Integer>
+    create(@RequestBody ArchitectorView architectorView) throws  NoSuchEntityException{
+                return responseFactory.get(architectorService.create(architectorView));
     }
 }

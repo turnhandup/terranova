@@ -1,6 +1,7 @@
 package myapp.persistence.dao;
 
 import myapp.persistence.entities.ArchitectorEntity;
+import myapp.persistence.entities.ObjectEntity;
 import org.springframework.data.domain.Page;
 
 import java.awt.print.Pageable;

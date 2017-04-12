@@ -6,7 +6,8 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-    <http auto-config="true" use-expressions="true">
+    <http auto-config="true" use-expressions="true" >
+
         <form-login
 
                 login-page="/login"
@@ -16,12 +17,14 @@
                 username-parameter="username"
                 password-parameter="password" />
         <intercept-url pattern="/admin" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/architector" access="hasRole('ARCHITECTOR')"/>
+
 
 
 
         <logout logout-success-url="/login?logout" />
         <!-- enable csrf protection -->
-        <csrf/>
+        <!--<csrf request-matcher-ref="myapp.services.convertors.CsrfSecurityRequestMatcher"/>-->
     </http>
     <beans:bean id="authSuccessHandler" class="myapp.controllers.rest.AuthSuccessHandler" />
     <beans:bean id="encoder" class="myapp.services.validators.MD5PasswordEncoder"/>
