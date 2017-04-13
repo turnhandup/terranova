@@ -43,5 +43,17 @@ public class Fields {
         public static final String SOFTWARE="software";
         public static final String HOURS="hours";
         public static final String IDARCHITECTOR="id_architector";
+        public static final String DEFAULT="id_object";
+    }
+
+    public static class Order{
+        public static final String ID="id_order";
+        public static final String HOURS ="hours";
+        public static final String OBJECTS="objects";
+        public static final String WORKERS="workers";
+        public static final String SALARY="salary";
+        public static final String IDORDERER="id_orderer";
+        public static final String IDORDERERDEPARTMENT="orderer_id_department";
+        public static final String DEFAULT="id_order";
     }
 }

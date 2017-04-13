@@ -78,10 +78,22 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     </bean>
     <bean id="ordererDao" class="myapp.services.utils.OrdererDaoImpl">
     </bean>
+    <bean id="objectDao" class="myapp.services.utils.ObjectDaoImpl"></bean>
+    <bean id="orderDao" class="myapp.services.utils.OrderDaoImpl">
+    </bean>
+
+
     <bean id="architectorService" class="myapp.services.utils.ArchitectorServiceImpl">
     </bean>
     <bean id="ordererService" class="myapp.services.utils.OrdererServiceImpl"></bean>
+    <bean id="orderService" class="myapp.services.utils.OrderServiceImpl"></bean>
+
     <bean id="directorService" class="myapp.services.utils.DirectorServiceImpl"></bean>
+    <bean id="objectService" class="myapp.services.utils.ObjectServiceImpl"></bean>
+
+    <bean id="customQueries" class="myapp.services.utils.CustomQueriesDaoImpl"></bean>
+
+
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">

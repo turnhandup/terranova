@@ -5,8 +5,6 @@ var app = angular.module('architector_create',[]);
 
 app.controller('architector_create_controller',function($scope,$http){
     $scope.ordererCreate=function() {
-        alert(JSON.stringify($scope.login));
-        alert(JSON.stringify(processData($scope)));
         var _method = ($scope ? $http.put : $http.put);
         var architector=processData($scope);
         _method('/api/architectors/create', JSON.stringify(architector), {headers: HEADERS}).then(function(response){

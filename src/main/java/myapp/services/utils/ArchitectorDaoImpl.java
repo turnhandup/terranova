@@ -34,7 +34,7 @@ public class ArchitectorDaoImpl implements ArchitectorDao {
     private static String INSERTUSER="INSERT INTO users (login, password, role,enabled) VALUES (?,MD5(?),'ARCHITECTOR', 1)";
     private static final String UPDATE="UPDATE architectors,users SET users.login=?,users.password=MD5(?),architectors.pib=?, architectors.hours=?,architectors.work_experience=?,architectors.email=?, architectors.phone_number=? WHERE id_architector=? AND users.id_user=architectors.Users_id_user";
     private static final String DELETE="DELETE users,architectors FROM architectors INNER JOIN users WHERE users.id_user=arhictectors.Users_id_user  AND architectors.id_architector=?";
-    private static final String FINDALL="SELECT * FROM architectors,users WHERE users.id_user=architectors.Users_id_user  GROUP BY id_architector";
+    private static final String FINDALL="SELECT * FROM architectors,users WHERE users.id_user=architectors.Users_id_user  GROUP BY pib";
     private BasicDataSource dataSource;
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
@@ -84,18 +84,16 @@ public class ArchitectorDaoImpl implements ArchitectorDao {
         };
         final KeyHolder holder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(psc, holder);
-        List<Map<String, Object>> list=holder.getKeyList();
-        for(Map<String,Object> l:list){
-            System.out.println(l.entrySet().toString());
-        }
-        System.out.println(holder.getKeyList().get(0).values());
-        System.out.println(holder.getKeyList().get(0).get("GENERATED_KEY"));
+//        List<Map<String, Object>> list=holder.getKeyList();
+//        for(Map<String,Object> l:list){
+//            System.out.println(l.entrySet().toString());
+//        }
+//        System.out.println(holder.getKeyList().get(0).values());
+//        System.out.println(holder.getKeyList().get(0).get("GENERATED_KEY"));
 
          int id_user=Long.valueOf((Long) holder.getKeyList().get(0).get("GENERATED_KEY")).intValue();
         int id=((Long) holder.getKeyList().get(0).get("GENERATED_KEY")).intValue();
-        System.out.println(id);
         architectorEntity.setId_user(id);
-        System.out.println(architectorEntity.getId_user());
         insertArchitector(architectorEntity);
         return rowsAffected;
     }

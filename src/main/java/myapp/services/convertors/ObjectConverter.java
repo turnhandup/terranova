@@ -5,18 +5,20 @@ import myapp.persistence.entities.ObjectEntity;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import myapp.services.convertors.Fields.Object.*;
+import org.springframework.stereotype.Component;
 
 import static myapp.services.convertors.Fields.Object.*;
 
 /**
  * Created by PANNA on 12.04.2017.
  */
+@Component
 public class ObjectConverter extends Converter<ObjectEntity> {
 
     @Override
     public Map<String, Object> convert(ObjectEntity object, Set<String> fields) {
         Map<String, Object> map = new HashMap<>();
+        System.out.println(fields.toString());
         if(fields.contains(ID)) {
             map.put(ID, object.getId_object());
         }

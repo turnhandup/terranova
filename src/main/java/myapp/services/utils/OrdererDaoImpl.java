@@ -23,7 +23,7 @@ public class OrdererDaoImpl implements OrdererDao {
     private JdbcTemplate jdbcTemplate;
 
     private static String GET="SELECT * FROM users,orderer,department WHERE orderer.id_orderer=? AND users.id_user=orderer.Users_id_user  AND department.id_department=orderer.Department_id_department;";
-    private static String GETALL="SELECT * FROM users,orderer,orders,department WHERE users.id_user=orderer.Users_id_user  AND department.id_department=orderer.Department_id_department;";
+    private static String GETALL="SELECT * FROM users,orderer,department WHERE users.id_user=orderer.Users_id_user  AND department.id_department=orderer.Department_id_department;";
     private static String GETTBYDEPARTMENT=" SELECT * FROM users,orderer,orders,department WHERE users.id_user=orderer.Users_id_user  AND department.id_department=orderer.Department_id_department AND id_department=?";
     private static String INSERTORDERER="INSERT INTO orderer (pib,company_name,phone_number,passport_data,email,address,Department_id_department, Users_id_user) VALUES (?,?,?,?,?,?,?,?)";
     private static String INSERT="INSERT INTO users (login, password, role,enabled) VALUES (?,MD5(?),'USER', 1)";

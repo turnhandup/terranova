@@ -19,7 +19,7 @@ public class ObjectServiceImpl implements  ObjectService {
     ObjectDao objectDao;
 
     @Autowired
-    ObjectConverter objectConverter;
+    private ObjectConverter objectConverter;
 
     @Override
     public ObjectEntity getObjectById(int id_object) {

@@ -4,10 +4,7 @@ import myapp.persistence.entities.*;
 import myapp.pojo.Response;
 import myapp.services.convertors.ArchitectorConverter;
 import myapp.services.convertors.Fields;
-import myapp.services.utils.ArchitectorService;
-import myapp.services.utils.ArchitectorServiceImpl;
-import myapp.services.utils.OrdererService;
-import myapp.services.utils.ResponseFactory;
+import myapp.services.utils.*;
 import myapp.services.validators.MD5PasswordEncoder;
 import myapp.views.DepartmentView;
 import myapp.views.OrdererView;
@@ -54,20 +51,20 @@ public class Tester {
        // architectorService.getAllArchitectors(0,0);
 
 
-        Set<String> field=new HashSet<String>();
-        field.add("departmentemail");
-        field.add("pib");
-        ArchitectorConverter architectorConverter=new ArchitectorConverter();
-
-
-        ArchitectorEntity architectorEntity=new ArchitectorEntity();
-        architectorEntity.setPib("Poliakov Anna Anatoliivna");
-        architectorEntity.setHours(0);
-        UserEntity user=new UserEntity();
-        user.setLogin("hello2");
-        user.setPassword("12345");
-        architectorEntity.setUserEntity(user);
-        architectorDao.insert(architectorEntity);
+//        Set<String> field=new HashSet<String>();
+//        field.add("departmentemail");
+//        field.add("pib");
+//        ArchitectorConverter architectorConverter=new ArchitectorConverter();
+//
+//
+//        ArchitectorEntity architectorEntity=new ArchitectorEntity();
+//        architectorEntity.setPib("Poliakov Anna Anatoliivna");
+//        architectorEntity.setHours(0);
+//        UserEntity user=new UserEntity();
+//        user.setLogin("hello2");
+//        user.setPassword("12345");
+//        architectorEntity.setUserEntity(user);
+        //architectorDao.insert(architectorEntity);
 //        architectorEntity.setEmail("panna1999@yandex.ru");
 //        architectorService.updateArchitector(architectorEntity);
 //        System.out.println(architectorEntity.toString());
@@ -124,5 +121,37 @@ public class Tester {
 //        ordererService.create(ordererView);
 //        System.out.println( ordererService.create(ordererView));
         //System.out.println(ordererService1.getOrdererById(id));
+//        Set<String> field2=new HashSet<String>();
+//        field2.add("id_architector");
+//        field2.add("id_object");
+//        field2.add("status");
+//        ObjectService objectService=(ObjectService) context.getBean("objectService");
+//        List<Map<String, Object>> object=objectService.getAllObjectsByArchitectorMap(0,0,1,field2);
+//        for(Map<String,Object> l:object){
+//            System.out.println(l.values());
+//        }
+//        ObjectDao objectDao = (ObjectDao) context.getBean("objectDao");
+//        List<ObjectEntity> object2=objectDao.getObjectByArchitector(1);
+//        for(ObjectEntity l:object2){
+//            System.out.println(l.toString());
+//        }
+
+//        OrderEntity oe = new OrderEntity();
+//        oe.setHours(25);
+//        oe.setObjects(1);
+//        oe.setWorkers(2);
+//        oe.setSalary(20000);
+//        oe.setId_orderer(1);
+//        oe.setOrderer_id_department(1);
+
+        CustomQueriesDao cq=(CustomQueriesDao)context.getBean("customQueries");
+//        orderDao.insert(oe);
+//        OrderEntity oe = orderDao.getById(2);
+//        System.out.println(oe.toString());
+//        oe.setSalary(25000);
+//        orderDao.update(oe);
+        System.out.println(cq.workDone().toString());
+
+
     }
 }

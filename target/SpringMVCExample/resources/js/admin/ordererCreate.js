@@ -7,8 +7,6 @@ FIELDS='fields=id_orderer,id_department,login,password,pib,company_name,phone_nu
 LIMIT = 20;
 app.controller('orderer_create_controller',function($scope,$http){
     $scope.ordererCreate=function() {
-        alert(JSON.stringify($scope.login));
-        alert(JSON.stringify(processData($scope)));
         var _method = ($scope ? $http.put : $http.put);
         var orderer=processData($scope);
         // alert("SCOPE"+ $scope.architectors);

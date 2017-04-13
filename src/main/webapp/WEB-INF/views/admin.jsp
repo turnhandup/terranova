@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale = 1.0">
 	<meta name="description" content="Great resource which will help you to find your best sport team to play with" />
-	<title>Teaspo.com</title> 
+	<title>TERRANOVA</title>
     
     <!---FONTS--->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
@@ -69,6 +69,9 @@
                             <li><a href="web/admin/createorderer">Add new</a></li>
                         </ul>
                     </li>
+                            <li><a href="" onclick="showObjects()">Objects</a></li>
+                    <li><a href="web/admin/zvit">Звіт</a></li>
+
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
@@ -152,13 +155,41 @@
 
                 <tr ng-repeat="orderer in orderers">
                     <td>{{orderer.id_orderer}}</td>
-                    <td>{{orderer.departmentadress}}</td>
+                    <td>{{orderer.departmentaddress}}</td>
                     <td>{{orderer.login}}</td>
                     <td>{{orderer.company_name}}</td>
                     <td>{{orderer.pib}}</td>
                     <td>{{orderer.phone_number}}</td>
                     <td>{{orderer.email}}</td>
                     <td><a href="/web/admin/{{orderer.id_orderer}}/editorderer" style="text-decoration: none; color:white;
+" class="glyphicon glyphicon-pencil"></a></td>            </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="allObjects" style="display:none">
+        <div class="container">
+            <h2 class="usersTable" style="font-family:'Poiret One'">OBJECTS TABLE</h2>
+            <table class="table" ng-controller="all_objects_control">
+                <thead>
+                <tr class="tableHeader"  style="font-family:'Poiret One'">
+                    <th>ID</th>
+                    <th>DONE</th>
+                    <th>DETALISATION</th>
+                    <th>SOFTWARE</th>
+                    <th>HOURS</th>
+                    <th>EDIT</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="object in objects">
+                    <td>{{object.id_object}}</td>
+                    <td>{{object.status}}</td>
+                    <td>{{object.detalisation}}</td>
+                    <td>{{object.software}}</td>
+                    <td>{{object.hours}}</td>
+                    <td><a href="/web/admin/{{object.id_object}}/editobject" style="text-decoration: none; color:white;
 " class="glyphicon glyphicon-pencil"></a></td>            </tr>
                 </tbody>
             </table>

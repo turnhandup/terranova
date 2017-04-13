@@ -38,7 +38,6 @@ public class OrdererApiController {
             @PathVariable("id") int userId,
             @RequestParam(value = "fields", required = false, defaultValue = Fields.Orderer.DEFAULT) Set<String> fields
     ) {
-        System.out.print(fields);
         return responseFactory.get(ordererService.getOrdererById(userId, fields));
     }
     @RequestMapping(

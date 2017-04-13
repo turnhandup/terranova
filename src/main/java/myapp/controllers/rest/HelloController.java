@@ -1,9 +1,13 @@
 package myapp.controllers.rest;
 
+import myapp.persistence.entities.UserEntity;
 import myapp.pojo.Response;
 import myapp.services.utils.ResponseFactory;
 import myapp.services.utils.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,12 +28,17 @@ public class HelloController {
 	private ResponseFactory responseFactory;
 
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView welcomePage() {
+	public ModelAndView welcomePage( HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security Custom Login Form");
 		model.addObject("message", "This is welcome page!");
 		model.setViewName("hello");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		UserEntity u=userService.getUserByLogin(userDetail.getUsername());
+		request.getSession().setAttribute("userId2", u.getId_user());
+		model.addObject("userId", u.getId_user());
 		return model;
 
 	}
@@ -45,9 +54,14 @@ public class HelloController {
 		return model;
 	}
 	@RequestMapping(value="/architector",method=RequestMethod.GET)
-	public ModelAndView architectorPage(){
+	public ModelAndView architectorPage(HttpServletRequest request){
 		ModelAndView model=new ModelAndView();
 		model.setViewName("architector");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		UserEntity u=userService.getUserByLogin(userDetail.getUsername());
+		request.getSession().setAttribute("userId2", u.getId_user());
+		model.addObject("userId", u.getId_user());
 		return model;
 	}
 	//Spring Security see this :

@@ -60,6 +60,7 @@ public class UserDaoImpl implements UserDao{
     public RowMapper<UserEntity> mapper = new RowMapper<UserEntity>() {
         public UserEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
             UserEntity user = new UserEntity();
+            user.setId_user(rs.getInt("id_user"));
             user.setLogin(rs.getString("login"));
             user.setPassword(rs.getString("password"));
             user.setEnabled((rs.getInt("enabled")));

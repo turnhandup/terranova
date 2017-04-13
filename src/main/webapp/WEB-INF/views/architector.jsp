@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html ng-app="all_objects">
  <head>
     <!---METADATA--->
 	<meta charset="UTF-8">
@@ -26,8 +26,7 @@
 
     <!--JAVASCRIPT-->
     <script type="text/javascript" src="../../resources/js/jquery.1.10.2.min.js"></script>
-	<script type="text/javascript" src="../../resources/js/architector/architector.js"></script>
-    
+
     <!--BOOTSTRAP-->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -92,8 +91,8 @@
 <%@ taglib prefix='core' uri='http://java.sun.com/jsp/jstl/core' %>
 <div id="allOrders" >
 <div class="container">
-<h2 class="usersTable" style="font-family:'Poiret One'">ORDERS TABLE</h2>
-        <table class="table" ng-controller="all_architectors_control">
+<h2 class="usersTable" style="font-family:'Poiret One'">OBJECTS TABLE</h2>
+        <table class="table" ng-controller="all_objects_control">
             <thead>
             <tr class="tableHeader"  style="font-family:'Poiret One'">
                 <th>ID</th>
@@ -106,18 +105,22 @@
             </thead>
             <tbody>
 
-            <tr ng-repeat="architector in architectors">
+            <tr ng-repeat="object in objects">
 
-                <td>{{architector.id_architector}}</td>
-                <td>{{architector.pib}}</td>
-                <td>{{architector.email}}</td>
-                <td>{{architector.hours}}</td>
-                <td>{{architector.work_experience}}</td>
-                <td><a href="/web/admin/{{architector.id_architector}}/edit" style="text-decoration: none; color:white;
+                <td>{{object.id_object}}</td>
+                <td>{{object.status}}</td>
+                <td>{{object.detalisation}}</td>
+                <td>{{object.software}}</td>
+                <td>{{object.hours}}</td>
+                <td><a href="/web/admin/{{object.id_object}}/editobjectarchitector" style="text-decoration: none; color:white;
 " class="glyphicon glyphicon-pencil"></a></td>            </tr>
             </tbody>
         </table>
     </div>
     </div>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+ <script src="../../../resources/js/utils/parse_url.js"></script>
+ <script src="../../../resources/js/architector/objectsByArchitector.js?id=${userId}" id="loader"></script>
+
 </body>
 </html>

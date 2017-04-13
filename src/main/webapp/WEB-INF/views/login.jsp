@@ -32,11 +32,10 @@
             -moz-border-radius: 2px;
             border: 1px solid #000;
         }
+
     </style>
 </head>
 <body onload='document.loginForm.username.focus();'>
-
-<h1>Spring Security Custom Login Form (XML)</h1>
 
 <div id="login-box">
 

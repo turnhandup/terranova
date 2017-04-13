@@ -18,11 +18,11 @@ public class ObjectDaoImpl implements ObjectDao {
     private JdbcTemplate jdbcTemplate;
 
     private final String GET="SELECT * FROM objects WHERE id_object=?;";
-    private final String GETALL="SELECT * FROM objects";
-    private final String GETALLBYARCHITECTOR="SELECT * FROM objects WHERE Architectors_id_architector=?;";
+    private final String GETALL="SELECT * FROM objects GROUP BY status";
+    private final String GETALLBYARCHITECTOR="SELECT id_object,status,detalisation, software,objects.hours,Architectors_id_architector FROM objects,architectors WHERE architectors.Users_id_user=? AND architectors.id_architector=objects.Architectors_id_architector  ;";
     private final String INSERT="INSERT INTO objects (status,detalisation,software,hours) VALUES (?,?,?,?);";
     private final String UPDATEARCHITECTOR="UPDATE objects SET  Architectors_id_architector=?";
-    private final String UPDATE="UPDATE objects SET status=?, detalisation=?, software=?, hours=? WHERE id_object=?";
+    private final String UPDATE="UPDATE objects SET status=?, detalisation=?, software=?, hours=?, Architectors_id_architector=? WHERE id_object=?";
     private final String REMOVE=" DELETE objects,orders_has_objects FROM orders_has_objects INNER JOIN objects WHERE id_object=1 AND objects.id_object=Orders_has_objects.Objects_id_object ;";
 
     public RowMapper<ObjectEntity> mapper = new RowMapper<ObjectEntity>() {
@@ -49,8 +49,8 @@ public class ObjectDaoImpl implements ObjectDao {
     }
 
     @Override
-    public List<ObjectEntity> getObjectByArchitector(int id_architector) {
-        return jdbcTemplate.query(GETALLBYARCHITECTOR,mapper);
+    public List<ObjectEntity> getObjectByArchitector(int id_user) {
+        return jdbcTemplate.query(GETALLBYARCHITECTOR,mapper,id_user);
     }
 
     @Override
@@ -65,6 +65,6 @@ public class ObjectDaoImpl implements ObjectDao {
 
     @Override
     public void update(ObjectEntity objectEntity) {
-        jdbcTemplate.update(UPDATE,objectEntity.isStatus(),objectEntity.getDetalisation(),objectEntity.getSoftware(), objectEntity.getHours(),objectEntity.getId_object());
+        jdbcTemplate.update(UPDATE,objectEntity.isStatus(),objectEntity.getDetalisation(),objectEntity.getSoftware(), objectEntity.getHours(),objectEntity.getId_architector(),objectEntity.getId_object());
     }
 }
